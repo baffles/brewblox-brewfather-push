@@ -87,3 +87,15 @@ Please see the [Brewfather documentation](https://docs.brewfather.app/integratio
 ### Brewer's Friend
 
 Please see the [Brewer's Friend documentation](https://docs.brewersfriend.com/api/stream) for details on the data fields supported.
+
+## Development
+
+This service can easily be built locally and deployed during development. An example docker-compose.yml file is provided in the `app` folder for ease of setup.
+To get going, do the following:
+
+* Clone the repository
+* Copy `config.json.sample` to `app/config.json` and modify
+* Run `docker-compose build`
+* Run `docker-compose up` or `docker-compose up -d`
+
+After making changes/modifications, just do a `docker-compose build` followed by another `docker-compose up` to run the modified version.
