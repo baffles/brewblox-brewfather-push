@@ -1,6 +1,10 @@
 {
 	"brewblox_url": "https://brewblox/",
 	"brewfather_stream": "XXXXXXXXXXXXXX",
+	"brewers_friend_stream": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+	"stream_urls": [
+		"https://log.brewersfriend.com/stream/foo"
+	],
 	"interval": "15m",
 	"devices": [
 		{

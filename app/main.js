@@ -5,9 +5,22 @@ const parseDuration = require('parse-duration')
 const config = JSON.parse(require('fs').readFileSync(process.argv[2] ?? 'config.json'))
 
 const metricsUrl = new URL('history/timeseries/metrics', config.brewblox_url)
-const streamUrl = `https://log.brewfather.net/stream?id=${config.brewfather_stream}`
 
-function pushToBrewfather() {
+const streamUrls = (() => {
+	let urls = config.stream_urls ? config.stream_urls.slice() : []
+
+	if (config.brewfather_stream) {
+		urls.push(`https://log.brewfather.net/stream?id=${config.brewfather_stream}`)
+	}
+
+	if (config.brewers_friend_stream) {
+		urls.push(`https://log.brewersfriend.com/stream/${config.brewers_friend_stream}`)
+	}
+
+	return urls
+})();
+
+function pushStreams() {
 	axios
 		.post(metricsUrl.href, {
 			fields: config.devices.flatMap(device => Object.values(device.fields)),
@@ -34,18 +47,23 @@ function pushToBrewfather() {
 					),
 				)
 
-				axios
-					.post(streamUrl, streamData)
-					.then(res => {
-						if (res.status == 200) {
-							console.log(`${new Date().toISOString()} [${device.name}] posted successfully (HTTP ${res.status})`)
-						} else {
-							console.error(`${new Date().toISOString()} [${device.name}] error (HTTP ${res.status})`)
-						}
-					})
-					.catch(error => {
-						console.error(`${new Date().toISOString()} [${device.name}] error`, error)
-					})
+				streamUrls.forEach(streamUrl => {
+					const host = new URL(streamUrl).hostname
+					const prefix = `${new Date().toISOString()} [${device.name}: ${host}]`
+
+					axios
+						.post(streamUrl, streamData)
+						.then(res => {
+							if (res.status == 200) {
+								console.log(`${prefix} posted successfully (HTTP ${res.status})`)
+							} else {
+								console.error(`${prefix} error (HTTP ${res.status})`)
+							}
+						})
+						.catch(error => {
+							console.error(`${prefix} error`, error)
+						})
+				})
 			})
 		})
 		.catch(error => {
@@ -53,5 +71,5 @@ function pushToBrewfather() {
 		})
 }
 
-setInterval(pushToBrewfather, parseDuration(config.interval))
-pushToBrewfather()
+setInterval(pushStreams, parseDuration(config.interval))
+pushStreams()
