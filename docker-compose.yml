@@ -1,0 +1,6 @@
+services:
+  brewblox_stream_publish:
+    image: baffles/brewblox-stream-publish:latest
+    volumes:
+      - ./config.json:/etc/brewblox-stream-publish.json
+    restart: unless-stopped

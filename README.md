@@ -8,19 +8,12 @@ For brewers with multiple fermentations going at the same time, this service sup
 ## Deploying
 
 This service can easily be deployed and run as a Docker service. An example `docker-compose.yml` file is provided for ease of setup.
-To get going, just clone the repository, create a configuration file, and deploy using Docker!
-
-```shell
-git clone https://github.com/baffles/brewblox-stream-publish.git
-cd brewblox-stream-publish/app
-cp config.json.sample config.json
-# edit config.json
-cp docker-compose.yml.sample docker-compose.yml
-docker-compose build
-docker-compose up -d
-```
-
+To get going, just grab `docker-compose.yml` and `config.json.sample` from the root of the repository and put them into a folder. Rename `config.json.sample` to `config.json`, modify it as appropriate (see _Configuration_ section below), and then do a `docker-compose up -d` to kick things off.
 After this, the service will automatically run and restart if it goes down.
+
+### Updating
+
+The default `docker-compose.yml` file references the `latest` tag. To update, you can just run `docker-compose pull` followed by `docker-compose up -d` to update to the latest version. You may also modify `docker-compose.yml` to specify different tags to get other versions.
 
 ## Configuration
 
