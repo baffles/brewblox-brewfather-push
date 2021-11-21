@@ -1,7 +1,7 @@
 {
 	"brewblox_url": "https://brewblox/",
-	"brewfather_stream": "XXXXXXXXXXXXXX",
-	"brewers_friend_stream": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+	"brewfather_stream_id": "XXXXXXXXXXXXXX",
+	"brewers_friend_api_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 	"stream_urls": [
 		"https://log.brewersfriend.com/stream/foo"
 	],

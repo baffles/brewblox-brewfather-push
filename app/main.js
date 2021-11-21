@@ -9,12 +9,12 @@ const metricsUrl = new URL('history/timeseries/metrics', config.brewblox_url)
 const streamUrls = (() => {
 	let urls = config.stream_urls ? config.stream_urls.slice() : []
 
-	if (config.brewfather_stream) {
+	if (config.brewfather_stream_id) {
 		urls.push(`https://log.brewfather.net/stream?id=${config.brewfather_stream}`)
 	}
 
-	if (config.brewers_friend_stream) {
-		urls.push(`https://log.brewersfriend.com/stream/${config.brewers_friend_stream}`)
+	if (config.brewers_friend_api_key) {
+		urls.push(`https://log.brewersfriend.com/stream/${config.brewers_friend_api_key}`)
 	}
 
 	return urls
@@ -61,7 +61,11 @@ function pushStreams() {
 							}
 						})
 						.catch(error => {
-							console.error(`${prefix} error`, error)
+							if (error.response) {
+								console.error(`${prefix} error (HTTP ${error.response.status})`, error.response.data)
+							} else {
+								console.error(`${prefix} error`, error)
+							}
 						})
 				})
 			})
