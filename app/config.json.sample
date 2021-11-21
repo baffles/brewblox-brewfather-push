@@ -1,0 +1,30 @@
+{
+	"brewblox_url": "https://brewblox/",
+	"brewfather_stream": "XXXXXXXXXXXXXX",
+	"interval": "15m",
+	"devices": [
+		{
+			"name": "ferm-1",
+			"constants": {
+				"temp_unit": "F",
+				"gravity_unit": "G"
+			},
+			"fields": {
+				"temp": "ferm-1/Ferm-1 Beer Setting/value[degF]",
+				"aux_temp": "ferm-1/Ferm-1 Fridge Sensor/value[degF]",
+				"gravity": "tilt/Blue/Specific gravity"
+			}
+		}, {
+			"name": "ferm-2",
+			"constants": {
+				"temp_unit": "F",
+				"gravity_unit": "G"
+			},
+			"fields": {
+				"temp": "ferm-2/Ferm-2 Beer Setting/value[degF]",
+				"aux_temp": "ferm-2/Ferm-2 Fridge Sensor/value[degF]",
+				"gravity": "tilt/Yellow/Specific gravity"
+			}
+		}
+	]
+}

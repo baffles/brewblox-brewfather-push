@@ -1,0 +1,15 @@
+{
+	"name": "brewblox_brewfather_push",
+	"version": "0.0.1",
+	"description": "A simple service to push fermentation data from BrewBlox to Brewfather",
+	"author": {
+		"name": "Bobby Ferris",
+		"email": "baf@baf.cc",
+		"url": "https://www.github.com/baffles/brewblox-brewfather-push"
+	},
+	"main": "main.js",
+	"dependencies": {
+		"axios": "^0.24.0",
+		"parse-duration": "^1.0.2"
+	}
+}

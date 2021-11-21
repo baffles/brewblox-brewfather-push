@@ -1,0 +1,6 @@
+services:
+  brewblox_brewfather_push:
+    build: .
+    volumes:
+      - ./config.json:/etc/brewblox-brewfather.json
+    restart: unless-stopped
