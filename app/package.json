@@ -1,11 +1,11 @@
 {
-	"name": "brewblox_brewfather_push",
+	"name": "brewblox_stream_publish",
 	"version": "0.0.1",
-	"description": "A simple service to push fermentation data from BrewBlox to Brewfather",
+	"description": "A simple service to push fermentation data from BrewBlox to Brewfather/Brewer's Friend streams",
 	"author": {
 		"name": "Bobby Ferris",
 		"email": "baf@baf.cc",
-		"url": "https://www.github.com/baffles/brewblox-brewfather-push"
+		"url": "https://www.github.com/baffles/brewblox-stream-publish"
 	},
 	"main": "main.js",
 	"dependencies": {

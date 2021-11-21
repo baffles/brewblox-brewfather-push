@@ -7,4 +7,4 @@ RUN npm install
 
 COPY . .
 
-CMD [ "node", "main.js", "/etc/brewblox-brewfather.json" ]
+CMD [ "node", "main.js", "/etc/brewblox-stream-publish.json" ]

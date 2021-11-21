@@ -1,6 +1,6 @@
 services:
-  brewblox_brewfather_push:
+  brewblox_stream_publish:
     build: .
     volumes:
-      - ./config.json:/etc/brewblox-brewfather.json
+      - ./config.json:/etc/brewblox-stream-publish.json
     restart: unless-stopped
