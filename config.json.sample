@@ -16,7 +16,7 @@
 			"fields": {
 				"temp": "ferm-1/Ferm-1 Beer Setting/value[degF]",
 				"aux_temp": "ferm-1/Ferm-1 Fridge Sensor/value[degF]",
-				"gravity": "tilt/Blue/Specific gravity"
+				"gravity": "tilt/Blue/specificGravity"
 			}
 		}, {
 			"name": "ferm-2",
@@ -27,7 +27,7 @@
 			"fields": {
 				"temp": "ferm-2/Ferm-2 Beer Setting/value[degF]",
 				"aux_temp": "ferm-2/Ferm-2 Fridge Sensor/value[degF]",
-				"gravity": "tilt/Yellow/Specific gravity"
+				"gravity": "tilt/Yellow/specificGravity"
 			}
 		}
 	]

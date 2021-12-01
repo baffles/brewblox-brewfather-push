@@ -10,7 +10,7 @@ const streamUrls = (() => {
 	let urls = config.stream_urls ? config.stream_urls.slice() : []
 
 	if (config.brewfather_stream_id) {
-		urls.push(`https://log.brewfather.net/stream?id=${config.brewfather_stream}`)
+		urls.push(`https://log.brewfather.net/stream?id=${config.brewfather_stream_id}`)
 	}
 
 	if (config.brewers_friend_api_key) {
@@ -31,6 +31,8 @@ function pushStreams() {
 			})
 		})
 		.then(res => {
+			console.debug(`Got ${res.data} from BrewBlox`)
+
 			const data = new Map(res.data.map(metric => [metric.metric, metric.value]))
 
 			config.devices.forEach(device => {
@@ -47,6 +49,8 @@ function pushStreams() {
 					),
 				)
 
+				console.debug(`Will publish ${JSON.stringify(streamData)}`)
+
 				streamUrls.forEach(streamUrl => {
 					const host = new URL(streamUrl).hostname
 					const prefix = `${new Date().toISOString()} [${device.name}: ${host}]`
@@ -56,6 +60,7 @@ function pushStreams() {
 						.then(res => {
 							if (res.status == 200) {
 								console.log(`${prefix} posted successfully (HTTP ${res.status})`)
+								console.debug(`${prefix} got ${res.data}`)
 							} else {
 								console.error(`${prefix} error (HTTP ${res.status})`)
 							}
