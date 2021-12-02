@@ -17,7 +17,12 @@ The default `docker-compose.yml` file references the `latest` tag. To update, yo
 
 ## Configuration
 
-`config.json.sample` contains examples of all possible configuration options.
+`config.json.sample` contains examples of typical configuration options.
+
+### `log_level` **(optional)**
+
+This setting controls the log level. By default, the log level is `'info'`.
+For possible values, see the [Winston docs](https://www.npmjs.com/package/winston#logging-levels).
 
 ### `brewblox_url` **(required)**
 

@@ -10,6 +10,7 @@
 	"main": "main.js",
 	"dependencies": {
 		"axios": "^0.24.0",
-		"parse-duration": "^1.0.2"
+		"parse-duration": "^1.0.2",
+		"winston": "^3.3.3"
 	}
 }
