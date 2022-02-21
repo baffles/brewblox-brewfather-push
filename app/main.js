@@ -24,7 +24,7 @@ const metricsUrl = new URL('history/timeseries/metrics', config.brewblox_url)
 logger.verbose(`using metrics URL ${metricsUrl}`)
 
 const streamUrls = (() => {
-	let urls = config.stream_urls ? config.stream_urls.slice() : []
+	let urls = config.stream_urls ? config.stream_urls.slice().map(url => new Url(url)) : []
 
 	if (config.brewfather_stream_id) {
 		urls.push(new URL(`https://log.brewfather.net/stream?id=${config.brewfather_stream_id}`))
